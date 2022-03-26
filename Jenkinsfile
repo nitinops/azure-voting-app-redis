@@ -11,7 +11,7 @@ pipeline {
             }
         }
         
-        stage ("build image") 
+        stage("build image") 
         {
             steps {
                 script {
@@ -20,7 +20,7 @@ pipeline {
                 }
         }
         
-        stage ("upload ECR") {
+        stage("upload ECR") {
             steps {
                 script {
                     sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-east-2.amazonaws.com"
