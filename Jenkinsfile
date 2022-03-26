@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/akannan1087/myPythonDockerRepo']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nitinops/azure-voting-app-redis']])
             }
         }
         
@@ -15,7 +15,7 @@ pipeline {
         {
             steps {
                 script {
-                    dockerImage = docker.build registry
+                    dockerImage = docker.build -t pythonapp .//azure-vote
                     }
                 }
         }
