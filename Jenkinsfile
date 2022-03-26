@@ -29,8 +29,8 @@ metadata:
   name: jenkins-agent
 spec:
   containers:
-  - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug
+  - name: bold_kirch
+    image: nginx
     imagePullPolicy: Always
     command:
     - /busybox/cat
@@ -39,7 +39,7 @@ spec:
       - name: azure-secret
         mountPath: /root/.aws/
       - name: docker-registry-config
-        mountPath: /kaniko/.docker
+        mountPath: /bold_kirch/.docker
   restartPolicy: Never
   volumes:
     - name: azure-secret
