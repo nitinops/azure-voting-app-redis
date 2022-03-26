@@ -15,7 +15,7 @@ pipeline {
         {
             steps {
                 script {
-                    dockerImage = docker build -t "pythonapp:v1" .//azure-vote
+                    docker build -t "pythonapp:v1" .//azure-vote
                     }
                 }
         }
