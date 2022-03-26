@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        registry = "account_id.dkr.ecr.us-east-2.amazonaws.com/my-docker-repo"
-    }
     stages {
         stage('checkout') {
             steps {
