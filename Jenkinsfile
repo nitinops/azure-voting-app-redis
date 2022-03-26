@@ -50,3 +50,4 @@ spec:
         name: docker-registry-config
 """
    }
+       }
