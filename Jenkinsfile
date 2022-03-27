@@ -37,7 +37,7 @@ pipeline {
         stage ("Deploy to K8S") {
             steps {
                 powershell """
-                (Get-Content ".\\azure-vote\\azure-vote-all-in-one-redis.yaml").replace('@img@', "${imagename}:${tagname}") | Set-Content ".\\azure-vote\\azure-vote-all-in-one-redis.yaml"
+                (Get-Content "${WORKSPACE}\\azure-vote\\azure-vote-all-in-one-redis.yaml").replace('@img@', "${imagename}:${tagname}") | Set-Content "${WORKSPACE}\\azure-vote\\azure-vote-all-in-one-redis.yaml"
                 """
             }
         }
