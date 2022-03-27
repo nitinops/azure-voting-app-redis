@@ -1,6 +1,7 @@
 pipeline {
     agent any
-
+def imagename="nitin7982/pythonapp"
+def tagname="v1"
     stages {
         stage('checkout') {
             steps {
@@ -14,7 +15,7 @@ pipeline {
                 script {
                     bat """
                     docker --version
-                    docker build -t "pythonapp:v1" ".//azure-vote"
+                    docker build -t "${imagename}:${tagname}" ".//azure-vote"
                     """
                     }
                 }
@@ -24,7 +25,7 @@ pipeline {
             steps {
                 script {
                     bat """
-                    docker push "nitin7982/pythonapp:v1"
+                    docker push "${imagename}:${tagname}"
                     """
                 }
             }
@@ -32,10 +33,9 @@ pipeline {
         
         stage ("Deploy to K8S") {
             steps {
-                bat """
-                kubectl get nodes
+                powershell """
+                (Get-Content ".\azure-vote-all-in-one-redis.yaml").replace('@img@', "${imagename}:${tagname}") | Set-Content ".\azure-vote-all-in-one-redis.yaml"
                 """
-                }
             }
         }
     }    
