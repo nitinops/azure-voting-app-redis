@@ -42,11 +42,11 @@ pipeline {
             }
         }
     }    
-    stage ("Final Deployment") {
-            steps {
-                bat """
-                'kubectl apply -f ("azure-vote-all-in-one-redis.yaml")
-                """
+   node {
+  stage('Apply Kubernetes files') {
+   withKubeConfig(caCertificate: '', clusterName: 'Aks', contextName: '', credentialsId: 'K8s', namespace: '', serverUrl: '')  {
+       'kubectl apply -f "(azure-vote-all-in-one-redis)"
+
                 }
             }
         }
