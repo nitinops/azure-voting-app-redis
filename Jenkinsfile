@@ -20,34 +20,21 @@ pipeline {
                 }
         }
         
-       agent {
-    kubernetes {
-        label podlabel
-        yaml """
-kind: Pod
-metadata:
-  name: jenkins-agent
-spec:
-  containers:
-  - name: bold_kirch
-    image: nginx
-    imagePullPolicy: Always
-    command:
-    - /busybox/cat
-    tty: true
-    volumeMounts:
-      - name: azure-secret
-        mountPath: /root/.aws/
-      - name: docker-registry-config
-        mountPath: /bold_kirch/.docker
-  restartPolicy: Never
-  volumes:
-    - name: azure-secret
-      secret:
-        secretName: azure-secret
-    - name: docker-registry-config
-      configMap:
-        name: docker-registry-config
-"""
-   }
-       }
+      stage ("upload ECR") {
+            steps {
+                script {
+                    sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-east-2.amazonaws.com"
+                    sh "docker push account_id.dkr.ecr.us-east-2.amazonaws.com/my-docker-repo:latest"
+                }
+            }
+        }
+        
+        stage ("Deploy to K8S") {
+            steps {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8S', namespace: '', serverUrl: '') {
+                      sh 'kubectl apply -f eks-deploy-from-ecr.yaml'
+                }
+            }
+        }
+    }    
+}
