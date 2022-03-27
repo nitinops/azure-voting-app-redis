@@ -32,8 +32,9 @@ pipeline {
         
         stage ("Deploy to K8S") {
             steps {
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8S', namespace: '', serverUrl: '') {
-                      sh 'kubectl apply -f eks-deploy-from-ecr.yaml'
+                bat """
+                kubectl get nodes
+                """
                 }
             }
         }
