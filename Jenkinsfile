@@ -43,11 +43,10 @@ pipeline {
     }    
     stage ("Final Deployment")
     steps {
-        powershell """
-        (kubectl apply -f deployment.yaml)
+        bat """
+        kubectl apply -f azure-vote-all-in-one-redis.yaml
         """
-    
     }
     
-    }
+ }
 }
