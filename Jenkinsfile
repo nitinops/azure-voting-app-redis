@@ -45,7 +45,7 @@ pipeline {
         stage ("Deploy") {
             steps {
                 script {
-                kubectl apply --filename=[azure-vote-all-in-one-redis]
+                kubectl apply -f =[azure-vote-all-in-one-redis]
                 
                }
            }
