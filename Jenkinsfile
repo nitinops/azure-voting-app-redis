@@ -50,7 +50,5 @@ pipeline {
        'kubectl apply -f "azure-vote-all-in-one-redis"
 """
                 }
-            }
-        
-}
+            } 
 }
