@@ -39,8 +39,9 @@ pipeline {
                 (Get-Content "${WORKSPACE}\\azure-vote-all-in-one-redis.yaml").replace('@img@', "${imagename}:${tagname}") | Set-Content "${WORKSPACE}\\azure-vote-all-in-one-redis.yaml"
                 """
             }
-        }
-    }    
+          }
+        }   
+    
         stage ('Deploy') {
            steps {
                script{
