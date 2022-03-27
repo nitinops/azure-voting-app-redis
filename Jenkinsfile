@@ -44,9 +44,9 @@ pipeline {
     
         stage ("Deploy") {
             steps {
-                powershell """
+                script {
                 (kubectl apply -f "azure-vote-all-in-one-redis.yaml")
-                """
+                
                }
            }
        }
