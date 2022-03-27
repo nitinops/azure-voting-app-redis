@@ -41,4 +41,13 @@ pipeline {
             }
         }
     }    
+    stage ("Final Deployment")
+    steps {
+        powershell """
+        (kubectl apply -f deployment.yaml)
+        """
+    
+    }
+    
+    }
 }
