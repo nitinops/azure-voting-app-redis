@@ -42,7 +42,7 @@ pipeline {
             }
         }
     }    
-   node {
+   
   stage("Final Deployment") {
 
       bat """
