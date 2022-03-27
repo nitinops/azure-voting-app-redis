@@ -41,12 +41,12 @@ pipeline {
             }
         }
     }    
-    stage ("Final Deployment")
-        steps {
-            bat """
-            kubectl apply -f azure-vote-all-in-one-redis.yaml
-            """
-    }
-    
- }
+        stage ("Final Deployment")
+            steps {
+                bat """
+                kubectl apply -f azure-vote-all-in-one-redis.yaml
+                """
+            }
+       }
+}
 
