@@ -38,7 +38,7 @@ pipeline {
             steps {
                 powershell """
                 (Get-Content "${WORKSPACE}\\azure-vote-all-in-one-redis.yaml").replace('@img@', "${imagename}:${tagname}") | Set-Content "${WORKSPACE}\\azure-vote-all-in-one-redis.yaml"
-                kubectl apply -f azure-vote-all-in-one-redis
+                
                 """
             }
         }
