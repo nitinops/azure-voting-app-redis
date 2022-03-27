@@ -1,3 +1,4 @@
+def artifactoryName="https://hub.docker.com/repository/docker/"
 def imagename="nitin7982/pythonapp"
 def tagname="v1"
 pipeline {
@@ -16,7 +17,7 @@ pipeline {
                 script {
                     bat """
                     docker --version
-                    docker build -t "${imagename}:${tagname}" ".//azure-vote"
+                    docker build -t "${artifactoryName}${imagename}:${tagname}" ".//azure-vote"
                     """
                     }
                 }
@@ -26,7 +27,7 @@ pipeline {
             steps {
                 script {
                     bat """
-                    docker push "${imagename}:${tagname}"
+                    docker push "${artifactoryName}${imagename}:${tagname}"
                     """
                 }
             }
@@ -35,7 +36,7 @@ pipeline {
         stage ("Deploy to K8S") {
             steps {
                 powershell """
-                (Get-Content ".\\azure-vote\\azure-vote-all-in-one-redis.yaml").replace('@img@', "${imagename}:${tagname}") | Set-Content ".\\azure-vote\\azure-vote-all-in-one-redis.yaml"
+                (Get-Content ".\\azure-vote\\azure-vote-all-in-one-redis.yaml").replace('@img@', "${artifactoryName}${imagename}:${tagname}") | Set-Content ".\\azure-vote\\azure-vote-all-in-one-redis.yaml"
                 """
             }
         }
