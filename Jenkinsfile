@@ -45,6 +45,8 @@ pipeline {
         stage ("Deploy") {
             steps {
                 powershell """
+                az account set --subscription 506ee6a3-f6c2-4636-8099-6ff849cc3b56
+                az aks get-credentials --resource-group test --name Aks
                 kubectl apply -f "{WORKSPACE}\\azure-vote-all-in-one-redis.yaml"
                 """
                }
