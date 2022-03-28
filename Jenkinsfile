@@ -44,9 +44,9 @@ pipeline {
     
         stage ("Deploy") {
             steps {
-                script {
+                powershell ""'
                 kubectl apply -p ("C:\ProgramData\Jenkins\.jenkins\workspace\MyK8sDeployJob) -f ("azure-vote-all-in-one-redis.yaml")
-                
+                """
                }
            }
        }
