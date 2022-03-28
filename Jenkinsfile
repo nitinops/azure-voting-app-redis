@@ -40,7 +40,7 @@ pipeline {
                 """
             }
           }
-        }   
+        
     
         stage ("Deploy") {
             steps {
