@@ -11,7 +11,7 @@ pipeline {
            
         
          def stdout = bat(returnStdout: true, script: './/first_basic_batch.bat')
-            echo "${params.Greeting} World!"
+            echo "${params.Greeting} How should I greet the world?"
             }
         }
         }
