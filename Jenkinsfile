@@ -7,7 +7,7 @@ pipeline {
              bat """
         
         set stdout = bat(returnStdout: true, script: './/first_basic_batch.bat')
-        echo("stdout ################ " + stdout + " ####################")
+        echo %stdout%
         """
         }
         }
