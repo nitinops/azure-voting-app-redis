@@ -11,22 +11,18 @@ pipeline {
                 call stdout = call(returnStdout: true, script: './/first_basic_batch.bat')
                 echo "${first_basic_batch}"
                 
-                /* Methods definitions properties */
-def doTag() {
-    dir(nitinops/azure-voting-app-redis) {
-        String tagCommand = """git tag -m "Release tag ${https://github.com/nitinops/azure-voting-app-redis.git}" ${version}"""
-        String pushCommand = "git push --tags origin ${master}"
+         
 
-        bat '''
+        bat """
             call $tagCommand
-            call $pushCommand'''
+            call $pushCommand
+            """
     }
 }
             }
         }
         }
-    }
-    }
+  
 
                 
            
