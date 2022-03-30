@@ -6,12 +6,24 @@ pipeline {
              bat """
         git('https://github.com/nitinops/azure-voting-app-redis.git')
         stdout = bat(returnStdout: true, script: 'git rev-parse HEAD')
-        println("stdout ################ " + stdout + " ####################")
         """
         }
-    
-   }
-
+        }
+    }
+    stage('Build') {
+            steps {
+                @echo off
+if not exist *.txt (
+echo This directory contains no text files.
+) else (
+   echo This directory contains the following text files:
+   echo.
+   dir /b *.txt
+   )
+                
+              
+            }
+        }
 }
 }
 
