@@ -18,7 +18,7 @@ echo This directory contains no text files.
 ) else (
    echo This directory contains the following text files:
    echo.
-   dir /b *.txt
+   "C:\Users\nitinrpa\azure-voting-app-redis\azure-vote" /b *.txt
    )
                 
               
