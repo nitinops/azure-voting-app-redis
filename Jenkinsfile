@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nitinops/azure-voting-app-redis']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nitinops/azure-voting-app-redis.git']]])
             }
         }
 
@@ -14,13 +14,16 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                  def getCommandOutput(cmd) {
+                    bat """
+                        def getCommandOutput(cmd) {
     if (isUnix()){
          return sh(returnStdout:true , script: '#!/bin/sh -e\n' + cmd).trim()
      } else{
        stdout = bat(returnStdout:true , script: cmd).trim()
        result = stdout.readLines().drop(1).join(" ")       
        return result
+       """
+          
     } 
 }
             }
