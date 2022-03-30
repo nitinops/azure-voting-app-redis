@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Checkout'){
-           """ bat 'C:\Users\nitinrpa\azure-voting-app-redis "${env.first_basic_batch.bat}"'}
+           """ bat 
+           %cd%C:\Users\nitinrpa\azure-voting-app-redis "${env.first_basic_batch.bat}"'}
+           
            """
         steps {
             script{
