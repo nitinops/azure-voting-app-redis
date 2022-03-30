@@ -5,7 +5,7 @@ pipeline {
         steps {
             script{
             git 'https://github.com/nitinops/azure-voting-app-redis.git'
-                SetValue = set "%~1 = 5", set "%~2 = 10", script: './/first_basic_batch.bat')
+                call [drive:][C:\Users\nitinrpa\azure-voting-app-redis\azure-vote]<first_basic_batch> [<batchparameters>] [:<label> [<arguments>]]
                 echo "${SetValue}"
             }
         }
