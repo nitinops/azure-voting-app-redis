@@ -6,7 +6,7 @@ pipeline {
             git 'https://github.com/nitinops/azure-voting-app-redis.git'
              bat """
         
-        set stdout = bat(returnStdout: true, script: 'git rev-parse HEAD')
+        set stdout = bat(returnStdout: true, script: './/first_basic_batch.bat')
         echo("stdout ################ " + stdout + " ####################")
         """
         }
