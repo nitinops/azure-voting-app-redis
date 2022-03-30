@@ -1,3 +1,6 @@
+//def artifactoryName="https://hub.docker.com/repository/docker/"
+def imagename="nitin7982/pythonapp"
+def tagname="v1"
 pipeline {
     agent any
     stages {
