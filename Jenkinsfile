@@ -16,12 +16,13 @@ stage ('build'){
            '%cd%\\Users\\nitinrpa\\azure-voting-app-redis "${env.first_basic_batch.bat}"'}
            
            """
+       }
+        }
+            
+            }
                 
        
 
                                          
-            }
-        }
-            
-            }
+         
       
