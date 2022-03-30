@@ -1,6 +1,7 @@
 pipeline {
     agent any
-node('windows') {
+    stages {
+        node('windows') {
 
     stage('Checkout'){
         git('https://github.com/nitinops/azure-voting-app-redis.git')
@@ -10,3 +11,5 @@ node('windows') {
 
 }
 }
+}
+
