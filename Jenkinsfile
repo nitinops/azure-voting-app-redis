@@ -1,3 +1,4 @@
+def getCommandOutput(bat) {
 pipeline {
     agent any
     stages {
@@ -12,15 +13,15 @@ pipeline {
             steps {
                 script {
                     bat """
-                        def getCommandOutput(bat) {
-    if (isUnix()){
+                    if (isUnix()){
          return sh(returnStdout:true , script: '#!/bin/sh -e\n' + bat).trim()
      } else{
        stdout = bat(returnStdout:true , script: bat).trim()
        result = stdout.readLines().drop(1).join(" ")       
        return result
        """
-          
+                }
+                      
     } 
 }
             
