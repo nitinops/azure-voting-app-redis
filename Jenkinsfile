@@ -1,3 +1,4 @@
+SETLOCAL
 :SetValue
 set "%~1 = 5"
 set "%~2 = 10"
