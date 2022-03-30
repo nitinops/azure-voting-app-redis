@@ -6,9 +6,8 @@ pipeline {
             script{
             git 'https://github.com/nitinops/azure-voting-app-redis.git'
                 def stdout = bat(returnStdout: true, script: './/first_basic_batch.bat')
-                result = stdout.readLines().drop(1).join(" ")       
-       return result()
-                                 
+                result = stdout.readLines()
+                echo "$(result)"                                 
             }
         }
             
