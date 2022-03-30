@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
     stages {
         stage('Checkout'){
         steps {
@@ -8,7 +10,7 @@ pipeline {
            
         
          def stdout = bat(returnStdout: true, script: './/first_basic_batch.bat')
-            println("${stdout}")
+            echo "${params.Greeting} World!"
             }
         }
         }
