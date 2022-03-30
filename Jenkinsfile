@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+        steps {
         stage('Checkout'){
             bat """
         git('https://github.com/nitinops/azure-voting-app-redis.git')
@@ -9,6 +10,7 @@ pipeline {
         """
    }
 
+}
 }
 }
 
