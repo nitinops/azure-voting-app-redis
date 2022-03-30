@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout'){
            """ bat 
-           %cd%C:\Users\nitinrpa\azure-voting-app-redis "${env.first_basic_batch.bat}"'}
+           "C:\Users\nitinrpa\azure-voting-app-redis", "${env.first_basic_batch.bat}"'}
            
            """
         steps {
