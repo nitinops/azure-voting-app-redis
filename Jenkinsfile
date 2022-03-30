@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment
     {
-    value1=1
-    value2=2
+    value1="Ankit"
+    value2="NITIN"
     }
     stages {
         stage('Checkout'){
