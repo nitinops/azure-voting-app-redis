@@ -1,3 +1,3 @@
 
-ECHO "${params.Greeting} World!"
+ECHO "${params.string}"
 PAUSE
