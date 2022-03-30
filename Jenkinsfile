@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Checkout'){
         steps {
+            git 'https://github.com/nitinops/azure-voting-app-redis.git'
              bat """
-        git('https://github.com/nitinops/azure-voting-app-redis.git')
+        
         set stdout = bat(returnStdout: true, script: 'git rev-parse HEAD')
         echo("stdout ################ " + stdout + " ####################")
         """
