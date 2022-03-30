@@ -1,6 +1,3 @@
-/* Environment Properties */
-repository_name = 'nitinops/azure-voting-app-redis'
-branch_to_build = "${master}"
 pipeline {
     agent any
     stages {
@@ -13,10 +10,6 @@ pipeline {
                 
          
 
-        bat """
-            call $tagCommand
-            call $pushCommand
-            """
     }
 }
             }
