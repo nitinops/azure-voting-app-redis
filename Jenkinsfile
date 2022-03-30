@@ -1,7 +1,5 @@
 pipeline {
     agent any
-    parameters {
-    string(name: 'STATEMENT', defaultValue: 'hello; ls /', description: 'What should I say?')
     stages {
         stage('Checkout'){
         steps {
@@ -10,11 +8,11 @@ pipeline {
            
         
          def stdout = bat(returnStdout: true, script: './/first_basic_batch.bat')
-            println("${string}")
+            println("${stdout}")
             }
         }
         }
     }
 }
-}
+
       
