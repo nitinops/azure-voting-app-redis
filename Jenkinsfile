@@ -1,8 +1,8 @@
 pipeline {
    agent any
    tools {
-       maven 'MAVEN_PATH'
-       jdk 'jdk8'
+       maven 'C:\Users\nitinrpa\Downloads\apache-maven-3.8.5-src\apache-maven-3.8.5'
+       jdk 'C:\Users\nitinrpa\Downloads\jdk-17_windows-x64_bin\jdk-17.0.2'
    }
    stages {
        stage("Tools initialization") {
@@ -35,8 +35,8 @@ pipeline {
            }
            environment {
                LAMBDATEST_CRED = credentials('Lambda-Test-Credentials-For-multibranch')
-               LT_USERNAME = "$LAMBDATEST_CRED_USR"
-               LT_ACCESS_KEY = "$LAMBDATEST_CRED_PSW"
+               LT_USERNAME = "$nitinops"
+               LT_ACCESS_KEY = "$Global#12345"
            }
           steps {
               sh "mvn test"
