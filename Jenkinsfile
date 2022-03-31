@@ -6,11 +6,11 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh """
+                bat """
                 echo "Building Artifact from Master branch"
                 """
 
-                sh """
+                bat """
                 echo "Deploying Code from Master branch"
                 """
             }
@@ -20,13 +20,26 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                sh """
+                bat """
                 echo "Building Artifact from Develop branch"
                 """
-                sh """
+                bat """
                 echo "Deploying Code from Develop branch"
                 """
            }
+        }
+        stage('Prod Branch Deploy Code') {
+            when {
+                branch 'prod'
+            }
+            steps {
+                bat """
+                echo "Building Artifact from prod branch"
+                """
+                bat """
+                echo "Deploying Code from prod branch"
+                """
+            }
         }
     }
 }
