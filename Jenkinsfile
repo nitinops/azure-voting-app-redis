@@ -1,32 +1,46 @@
 pipeline {
-    agent any
-    stages {
-        stage('Master Branch Deploy Code') {
-            when {
-                branch 'master'
-            }
-            steps {
-                sh """
-                echo "Building Artifact from Master branch"
-                """
-
-                sh """
-                echo "Deploying Code from Master branch"
-                """
-            }
-        }
-        stage('Develop Branch Deploy Code') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                sh """
-                echo "Building Artifact from Develop branch"
-                """
-                sh """
-                echo "Deploying Code from Develop branch"
-                """
+   agent any
+   tools {
+       maven 'MAVEN_PATH'
+       jdk 'jdk8'
+   }
+   stages {
+       stage("Tools initialization") {
+           steps {
+               sh "mvn --version"
+               sh "java -version"
            }
-        }
-    }
+       }
+       stage("Checkout Code") {
+           steps {
+               checkout scm
+           }
+       }
+       stage("Check Code Health") {
+           when {
+               not {
+                   anyOf {
+                       branch 'master';
+                       branch 'develop'
+                   }
+               }
+          }
+          steps {
+              sh "mvn clean compile"
+           }
+       }
+       stage("Run Test cases in LambdaTest") {
+           when {
+               branch 'develop';
+           }
+           environment {
+               LAMBDATEST_CRED = credentials('Lambda-Test-Credentials-For-multibranch')
+               LT_USERNAME = "$LAMBDATEST_CRED_USR"
+               LT_ACCESS_KEY = "$LAMBDATEST_CRED_PSW"
+           }
+          steps {
+              sh "mvn test"
+           }
+       }
+   }
 }
