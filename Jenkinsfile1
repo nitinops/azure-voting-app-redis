@@ -21,7 +21,7 @@ pipeline {
         stage('Start') {
             steps {
                 bat """
-                echo "${params.pipeline2}"
+                echo %params.pipeline2%
                 """
             }
         }
