@@ -14,7 +14,7 @@ pipeline {
                 }    
             }
         }
-    }
+    
 
         stage('Master Branch Deploy Code') {
             when {
@@ -61,4 +61,5 @@ pipeline {
                 """
             }
         }
-}        
+    }
+}
