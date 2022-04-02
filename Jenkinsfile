@@ -18,7 +18,9 @@ pipeline {
    
         stage('Start') {
             steps {
-                bat 'ls'
+                bat """
+                ls
+                """
             }
         }
 
@@ -32,7 +34,9 @@ pipeline {
 
         stage('End') {
             steps {
-                bat 'ls'
+                bat """
+                ls
+                """
             }
         }
     }
