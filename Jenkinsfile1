@@ -18,13 +18,15 @@ pipeline {
    
         stage('Start') {
             steps {
-                bat 'ls'
+                bat """
+                ls
+                """
             }
         }
 
-        stage ('Invoke_pipeline1') {
+        stage ('Invoke_pipeline') {
             steps {
-                build job: 'pipeline', parameters: [
+                build job: 'pipeline1', parameters: [
                 string(name: 'param1', value: "value1")
                 ]
             }
@@ -32,7 +34,9 @@ pipeline {
 
         stage('End') {
             steps {
-                bat 'ls'
+                bat """
+                ls
+                """
             }
         }
     }
