@@ -15,8 +15,7 @@ pipeline {
                 """
             }
         }
-    stages 
-    {
+   
         stage('Start') {
             steps {
                 sh 'ls'
@@ -38,4 +37,4 @@ pipeline {
         }
     }
 }
-}
+
