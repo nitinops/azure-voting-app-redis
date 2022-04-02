@@ -25,7 +25,8 @@ pipeline {
         
             steps {
             script{
-            paramNonuNoni="${params.pipeline2}"
+            env.paramNonuNoni="${params.pipeline2}"
+            println(env.paramNonuNoni)
                 bat """
                 echo %paramNonuNoni%
                 """
