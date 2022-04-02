@@ -25,10 +25,10 @@ pipeline {
         }
 
         
-         stage('Build Code') {
+         stage('Example') {
            steps {
                bat """
-               echo "Building Artifact"
+               echo "params"
                """
            }
          }
