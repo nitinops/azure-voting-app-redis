@@ -19,7 +19,7 @@ pipeline {
         stage('Start') {
             steps {
                 bat """
-                dir
+                echo "${params}"
                 """
             }
         }
