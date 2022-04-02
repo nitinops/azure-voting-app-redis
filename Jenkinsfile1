@@ -7,7 +7,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-            echo "${params}"
+            echo "${params.pipeline2}"
                 bat """
                 echo "Building Artifact from Master branch"
                 """
