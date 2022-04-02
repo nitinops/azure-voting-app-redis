@@ -24,10 +24,12 @@ pipeline {
         stage('Start') {
         
             steps {
+            script{
             paramNonuNoni="${params.pipeline2}"
                 bat """
                 echo %env.paramNonuNoni%
                 """
+                }
             }
         }
 
