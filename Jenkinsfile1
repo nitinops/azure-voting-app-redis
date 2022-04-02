@@ -25,10 +25,10 @@ pipeline {
         }
 
         
-         stage('Example') {
+         stage('Build') {
            steps {
                bat """
-               echo "${params}"
+               echo "Building pipeline"
                """
            }
          }
