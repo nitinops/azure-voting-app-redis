@@ -1,44 +1,31 @@
 pipeline {
-    agent any
-    stages {
-        stage('Master Branch Deploy Code') {
-            when {
-                branch 'master'
-            }
-            steps {
-                bat """
-                echo "Building Artifact from Master branch"
-                """
+    agent
+    {
+        node {
+                label 'master'
+                customWorkspace "${env.JobPath}"
+              }
+    }
 
-                bat """
-                echo "Deploying Code from Master branch"
-                """
+    stages 
+    {
+        stage('Start') {
+            steps {
+                sh 'ls'
             }
         }
-        stage('Develop Branch Deploy Code') {
-            when {
-                branch 'develop'
-            }
+
+        stage ('Invoke_pipeline') {
             steps {
-                bat """
-                echo "Building Artifact from Develop branch"
-                """
-                bat """
-                echo "Deploying Code from Develop branch"
-                """
-           }
+                build job: 'pipeline1', parameters: [
+                string(name: 'param1', value: "value1")
+                ]
+            }
         }
-        stage('Prod Branch Deploy Code') {
-            when {
-                branch 'prod'
-            }
+
+        stage('End') {
             steps {
-                bat """
-                echo "Building Artifact from prod branch"
-                """
-                bat """
-                echo "Deploying Code from prod branch"
-                """
+                sh 'ls'
             }
         }
     }
