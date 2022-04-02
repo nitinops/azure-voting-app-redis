@@ -28,7 +28,8 @@ pipeline {
             paramNonuNoni="${params.pipeline2}"
             println(paramNonuNoni)
                 bat """
-                echo %paramNonuNoni%
+                echo "Ankit"
+                echo env.paramNonuNoni
                 """
                 }
             }
