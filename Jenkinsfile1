@@ -27,7 +27,7 @@ pipeline {
             script{
             paramNonuNoni="${params.pipeline2}"
                 bat """
-                echo %env.paramNonuNoni%
+                echo %paramNonuNoni%
                 """
                 }
             }
