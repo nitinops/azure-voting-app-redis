@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    
+    environment
+    {
+    paramNonuNoni=""
+    }
     stages {
         stage('Master Branch Deploy Code') {
             when {
@@ -19,9 +22,10 @@ pipeline {
         }
    
         stage('Start') {
+        paramNonuNoni="${params.pipeline2}"
             steps {
                 bat """
-                echo %params.pipeline2%
+                echo %env.paramNonuNoni%
                 """
             }
         }
