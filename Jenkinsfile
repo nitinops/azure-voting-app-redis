@@ -4,6 +4,8 @@ pipeline {
         string(name: 'Ankit', description: 'Master')
         string(name: 'Nitin', description: 'Slave')
     }
+    {
+
     
     
 
