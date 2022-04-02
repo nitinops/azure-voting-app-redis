@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment
     {
-    paramNonuNoni
+    paramNonuNoni=""
     }
     stages {
         stage('Master Branch Deploy Code') {
