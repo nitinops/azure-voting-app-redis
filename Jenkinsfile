@@ -36,7 +36,7 @@ pipeline {
         stage ('Invoke_pipeline') {
             steps {
                 build job: 'pipeline1', parameters: [
-                string(name: 'param1', value: "value1")
+                string(name: 'param1', value: "Ankit")
                 ]
             }
         }
