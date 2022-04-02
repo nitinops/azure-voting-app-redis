@@ -28,7 +28,7 @@ pipeline {
          stage('Example') {
            steps {
                bat """
-               echo "params"
+               echo "${params}"
                """
            }
          }
