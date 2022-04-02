@@ -31,11 +31,18 @@ pipeline {
                 ]
             }
         }
+         stage('Build Code') {
+           steps {
+               bat """
+               echo "Building Artifact"
+               """
+           }
+         }
 
         stage('End') {
             steps {
                 bat """
-                print(String)
+                echo "End of the pipeline"
                 """
             }
         }
