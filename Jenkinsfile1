@@ -26,8 +26,8 @@ pipeline {
 
         stage ('Invoke_pipeline1') {
             steps {
-                build job: 'pipeline2', parameters: [
-                string(name: 'param1', value: "value1")
+                build job: 'pipeline', parameters: [
+                string(name: 'param2', value: "value2")
                 ]
             }
         }
