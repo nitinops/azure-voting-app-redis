@@ -35,7 +35,7 @@ pipeline {
         stage('End') {
             steps {
                 bat """
-                dir
+                print(String)
                 """
             }
         }
