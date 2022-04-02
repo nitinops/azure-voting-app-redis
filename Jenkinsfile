@@ -5,6 +5,16 @@ pipeline {
         string(name: 'PARAM2', description: 'Param 2?')
     }
     stages {
+        stage('Example') {
+            steps {
+                echo "${params}"
+                script {
+                    def myparams = params + string(name: 'MYPARAM', value: "${params.MYPARAM}")
+                    build job: 'downstream-pipeline-with-params', parameters: myparams
+                }    
+            }
+        }
+    }
         stage('Master Branch Deploy Code') {
             when {
                 branch 'master'
