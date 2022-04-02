@@ -1,11 +1,20 @@
 pipeline {
-    agent
-    {
-        node {
-                label 'master'
-                customWorkspace "${env.JobPath}"
-              }
-    }
+    agent any
+    stages {
+        stage('Master Branch Deploy Code') {
+            when {
+                branch 'master'
+            }
+            steps {
+                bat """
+                echo "Building Artifact from Master branch"
+                """
+
+                bat """
+                echo "Deploying Code from Master branch"
+                """
+            }
+        }
 
     stages 
     {
