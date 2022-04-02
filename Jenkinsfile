@@ -4,13 +4,7 @@ pipeline {
         string(name: 'Ankit', description: 'Master')
         string(name: 'Nitin', description: 'Slave')
     }
-    stages {
-        stage('Example') {
-            steps {
-                echo "${params}"
-                   
-            }
-        }
+    
     
 
         stage('Master Branch Deploy Code') {
