@@ -1,23 +1,31 @@
 pipeline {
-    agent
-    {
-        node {
-                label 'master'
-                customWorkspace "${env.JobPath}"
-              }
-    }
+    agent any
+    stages {
+        stage('Master Branch Deploy Code') {
+            when {
+                branch 'master'
+            }
+            steps {
+                bat """
+                echo "Building Artifact from Master branch"
+                """
 
-    stages 
+                bat """
+                echo "Deploying Code from Master branch"
+                """
+            }
+        }
+stages 
     {
         stage('Start') {
             steps {
-                sh 'ls'
+                bat'ls'
             }
         }
 
-        stage ('Invoke_pipeline') {
+        stage ('Invoke_Pipeline-1') {
             steps {
-                build job: 'pipeline1', parameters: [
+                build job: 'Pipeline-2', parameters: [
                 string(name: 'param1', value: "value1")
                 ]
             }
@@ -25,8 +33,9 @@ pipeline {
 
         stage('End') {
             steps {
-                sh 'ls'
-            }
+                bat 'ls'
+
+        }
         }
     }
 }
