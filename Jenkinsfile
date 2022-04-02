@@ -15,6 +15,7 @@ pipeline {
             }
         }
     }
+
         stage('Master Branch Deploy Code') {
             when {
                 branch 'master'
@@ -60,6 +61,4 @@ pipeline {
                 """
             }
         }
-    }
-}
-
+}        
