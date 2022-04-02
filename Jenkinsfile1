@@ -22,8 +22,9 @@ pipeline {
         }
    
         stage('Start') {
-        paramNonuNoni="${params.pipeline2}"
+        
             steps {
+            paramNonuNoni="${params.pipeline2}"
                 bat """
                 echo %env.paramNonuNoni%
                 """
