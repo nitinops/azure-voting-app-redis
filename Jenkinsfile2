@@ -15,31 +15,27 @@ pipeline {
                 """
             }
         }
-        stage('Develop Branch Deploy Code') {
-            when {
-                branch 'develop'
-            }
+stages 
+    {
+        stage('Start') {
             steps {
-                bat """
-                echo "Building Artifact from Develop branch"
-                """
-                bat """
-                echo "Deploying Code from Develop branch"
-                """
-           }
+                bat'ls'
+            }
         }
-        stage('Prod Branch Deploy Code') {
-            when {
-                branch 'prod'
-            }
+
+        stage ('Invoke_Pipeline-2') {
             steps {
-                bat """
-                echo "Building Artifact from prod branch"
-                """
-                bat """
-                echo "Deploying Code from prod branch"
-                """
+                build job: 'Pipeline-1', parameters: [
+                string(name: 'param1', value: "value1")
+                ]
             }
+        }
+
+        stage('End') {
+            steps {
+                bat 'ls'
+
+        }
         }
     }
 }
