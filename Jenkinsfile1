@@ -24,18 +24,25 @@ pipeline {
             }
         }
 
-        stage ('Invoke_pipeline1') {
+        stage ('Invoke_pipeline') {
             steps {
-                build job: 'pipeline', parameters: [
-                string(name: 'param2', value: "value2")
+                build job: 'pipeline1', parameters: [
+                string(name: 'param1', value: "value1")
                 ]
             }
         }
+         stage('Build Code') {
+           steps {
+               bat """
+               echo "Building Artifact"
+               """
+           }
+         }
 
         stage('End') {
             steps {
                 bat """
-                print(string)
+                echo "End of the pipeline"
                 """
             }
         }
