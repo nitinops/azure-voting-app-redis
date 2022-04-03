@@ -4,7 +4,7 @@ pipeline{
     }
 
     environment {
-        GIT_URL = 'git@github.com:rafaftahsin/Unity-Jenkinsfile-Exmaple.git'
+        GIT_URL = ''
     }
 
     
