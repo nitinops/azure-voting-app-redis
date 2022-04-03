@@ -4,7 +4,7 @@ pipeline{
     }
 
     environment {
-        GIT_URL = ''
+        GIT_URL = 'https://github.com/nitinops/azure-voting-app-redis.git'
     }
 
     
