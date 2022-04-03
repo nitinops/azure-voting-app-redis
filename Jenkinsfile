@@ -1,41 +1,28 @@
 pipeline{
+    agent {
+        label 'build.machine'
+    }
 
-  agent any 
-    try {
-        stages{
-            stage("Ankit") {
-                steps {
-                    parallel (
-                       'firstTask' : { 
-                            build( "Ankit@tech" )
-                        },
-                        'secondTask' : { 
-                            build( "Nitin@tech" )
-                        }
-                    )
-                }
-            }
-            stage("Upender") {
-                steps {
-                        build( "Upender@tech" )
-                        build( "Sunita@tech" )
-                }
-            }
-            stage("Nonu") {
-                steps{
-                    parallel (
-                        "thirdTask" : { 
-                            build( "Nonu@tech" )
-                        },
-                        "forthTask" : { 
-                            build( "Noni@tech" )
-                        }
-                    )
+    environment {
+        GIT_URL = 'git@github.com:rafaftahsin/Unity-Jenkinsfile-Exmaple.git'
+    }
+
+    
+    stages{
+        stage('Try Catch Block'){
+            steps {
+                script {
+                    try {
+                        bat """
+                        dir
+                        """
+                    }
+                    catch (exc) {
+                        bat 'first_basic_batch'
+                        error("Build Failed Due to Test Fail.")
+                    }
                 }
             }
         }
-    }   
-
-    catch(all) {
-        currentBuild.result = 'FAILURE'
-    }   
+    }
+}
