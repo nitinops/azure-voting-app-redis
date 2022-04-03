@@ -1,8 +1,6 @@
 pipeline{
     agent any {
-        label 'build.machine'
-    }
-
+  
     environment {
         GIT_URL = 'https://github.com/nitinops/azure-voting-app-redis.git'
     }
