@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages{
-         stage('Develop Branch Deploy Code') {
+         stage('Start') {
          steps {
-         build(job: 'pipeline.First-Multibranch-Pipeline', parameters: [string(name: 'DEPLOY_TO', value: "test")])
+         build(job: 'pipeline.pipeline1', parameters: [string(name: 'DEPLOY_TO', value: "test")])
     }
 }
 }
