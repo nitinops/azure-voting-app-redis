@@ -5,8 +5,8 @@ pipeline {
             agent any
             steps {
                 checkout scm
-                sh 'make'
-                stash includes: '**/target/*.jar', name: 'app' 
+                bat 'make'
+                stash includes: '**/first_basic_batch/*.bat', name: 'app' 
             }
         }
         stage('Test on Linux') {
@@ -15,11 +15,11 @@ pipeline {
             }
             steps {
                 unstash 'app' 
-                sh 'make check'
+                bat 'make check'
             }
             post {
                 always {
-                    junit '**/target/*.xml'
+                    junit '**/first_basic_batch/*.bat'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '**/target/*.xml'
+                    junit '**/first_basic_batch/*.bat'
                 }
             }
         }
