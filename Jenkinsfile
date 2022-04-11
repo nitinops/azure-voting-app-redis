@@ -5,7 +5,7 @@ pipeline {
             agent any
             steps {
                 checkout scm
-                bat 'make'
+                sh 'make'
                 stash includes: '**/target/*.jar', name: 'app' 
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 unstash 'app' 
-                bat 'make check'
+                sh 'make check'
             }
             post {
                 always {
