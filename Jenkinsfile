@@ -1,26 +1,11 @@
 pipeline {
-    agent any{
-        stages {
-        stage('Checkout'){
+    agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
+    stages {
+        stage('Test') {
             steps {
-            script{
-            git 'https://github.com/nitinops/azure-voting-app-redis.git'
-                def stdout = bat(returnStdout: true, script: './/first_basic_batch.bat')
-                result = stdout.readLines()
-            }
-            stage('Try Catch Block'){
-              steps {
-                script {
-                    try {
-                        bat """
-                        dir
-                        """
-                    }
-                    catch (exc) {
-                        bat 'first_basic_batch.bat'
-                        error("Build Failed Due to Test Fail.")
-                    }
-                }
+                sh 'node --version'
             }
         }
     }
