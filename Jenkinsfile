@@ -12,7 +12,7 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
     stages {
-        stage('Example') {
+        stage('Fetching Details') {
             steps {
                 echo "Hello ${params.PERSON}"
 
